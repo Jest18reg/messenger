@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#007bff">
+    <meta name="description" content="Простой мессенджер для слабого интернета">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Simple Messenger">
+    
+    <title>Simple Messenger</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💬</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💬</text></svg>">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div id="loginScreen" class="login-form">
+        <h2>💬 Простой Мессенджер</h2>
+        <p class="subtitle">Для слабого интернета</p>
+        
+        <div class="input-group">
+            <input type="text" id="loginUsername" placeholder="Ваш никнейм" pattern="[A-Za-z0-9_]+" required>
+            <input type="password" id="loginPassword" placeholder="Пароль" required>
+        </div>
+        
+        <button id="loginBtn" class="btn-primary">Войти</button>
+        
+        <div class="divider">или</div>
+        
+        <button id="showRegisterBtn" class="btn-secondary">Создать аккаунт</button>
+
+        <div class="info-box">
+            <strong>📝 Инструкция:</strong>
+            <ol>
+                <li>Создайте аккаунт</li>
+                <li>Расскажите друзьям ваш никнейм</li>
+                <li>Найдите друг друга через поиск</li>
+                <li>Общайтесь!</li>
+            </ol>
+            <p>📱 На телефоне: Добавьте в главный экран для быстрого доступа</p>
+            <p>⚠️ Данные хранятся в браузере. Для общения нужно быть на одном сайте.</p>
+        </div>
+    </div>
+
+    <div id="registerScreen" class="register-form hidden">
+        <h2>📝 Регистрация</h2>
+        
+        <div class="input-group">
+            <input type="text" id="registerUsername" placeholder="Придумайте никнейм (только буквы, цифры, _)" 
+                   pattern="[A-Za-z0-9_]+" required>
+            <input type="password" id="registerPassword" placeholder="Придумайте пароль" required>
+        </div>
+        
+        <button id="registerBtn" class="btn-primary">Создать аккаунт</button>
+        
+        <div class="divider">или</div>
+        
+        <button id="showLoginBtn" class="btn-secondary">Уже есть аккаунт</button>
+    </div>
+
+    <div id="app" class="container hidden">
+        <div class="header">
+            <div class="header-left">
+                <button class="icon-btn" id="backBtn" style="display: none;">←</button>
+                <div class="header-titles">
+                    <h2>💬 <span id="currentChat">Мессенджер</span></h2>
+                    <span class="username">@<span id="currentUsername"></span></span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="icon-btn" id="themeSwitch" title="Сменить тему">🌙</button>
+                <button class="icon-btn" id="searchBtn" title="Поиск">🔍</button>
+                <button class="icon-btn" id="logoutBtn" title="Выйти">🚪</button>
+            </div>
+        </div>
+
+        <div id="searchContainer" class="search-container hidden">
+            <input type="text" id="searchInput" placeholder="Введите никнейм для поиска...">
+            <button id="closeSearch">✕</button>
+        </div>
+
+        <div class="chat-list" id="chatList">
+            <div class="empty-state">
+                <p>👋 Начните общение!</p>
+                <p>Найдите пользователя через поиск 🔍</p>
+            </div>
+        </div>
+
+        <div class="message-area hidden" id="messageArea">
+            <div class="message-list" id="messageList">
+                <div class="empty-chat">
+                    <p>💬 Начните диалог</p>
+                </div>
+            </div>
+            
+            <div class="input-area">
+                <input type="text" id="messageInput" placeholder="Напишите сообщение или @никнейм..." disabled>
+                <button id="sendBtn" disabled>Отправить</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="installPrompt" class="install-prompt hidden">
+        <p>📱 Установите приложение для быстрого доступа</p>
+        <button id="installBtn">Установить</button>
+        <button id="closeInstall">✕</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
